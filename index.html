@@ -1,67 +1,420 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy - Deep Clean</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Deep Clean</title>
+<style>
+  :root{
+    --ink:#0f1b1a;
+    --paper:#f6f8f7;
+    --panel:#ffffff;
+    --line:#d9e2df;
+    --teal:#0e6e63;
+    --teal-deep:#0a4f47;
+    --mint:#e4f3ee;
+    --mono-bg:#0f1b1a;
+    --mono-ink:#c9f4e6;
+    --muted:#5b6b67;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .backdrop{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(14,110,99,0.08), transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(14,110,99,0.06), transparent 40%);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:64px 24px 48px;
+    max-width:880px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:"JetBrains Mono","SFMono-Regular",Consolas,monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--teal);
+    background:var(--mint);
+    padding:6px 12px;
+    border-radius:100px;
+    border:1px solid rgba(14,110,99,0.2);
+  }
+  .eyebrow svg{width:13px;height:13px;flex-shrink:0;}
+  h1{
+    font-family:"Fraunces","Georgia",serif;
+    font-weight:600;
+    font-size:clamp(34px,5vw,52px);
+    letter-spacing:-0.02em;
+    margin:20px 0 10px;
+    color:var(--teal-deep);
+  }
+  .sub{
+    color:var(--muted);
+    font-size:17px;
+    max-width:56ch;
+    margin:0 0 28px;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  .meta-row div{display:flex; flex-direction:column; gap:2px;}
+  .meta-row span.label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#8a9793;
+  }
+  .meta-row a{color:var(--teal-deep); font-weight:600; text-decoration:none;}
+  .meta-row a:hover{text-decoration:underline;}
+
+  /* ---------- At a glance ---------- */
+  .glance-wrap{max-width:880px; margin:40px auto 0; padding:0 24px;}
+  .glance{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:28px 28px 8px;
+    box-shadow:0 1px 2px rgba(15,27,26,0.04);
+  }
+  .glance h2{
+    font-family:"Fraunces",serif;
+    font-size:19px;
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .glance-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px 20px;
+    padding-bottom:22px;
+  }
+  .glance-item{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .glance-item svg{
+    flex-shrink:0;
+    width:20px;height:20px;
+    color:var(--teal);
+    margin-top:2px;
+  }
+  .glance-item p{margin:0; font-size:14.5px; color:var(--ink);}
+  .glance-item strong{display:block; font-size:14.5px; margin-bottom:2px;}
+
+  /* ---------- Layout: nav + content ---------- */
+  .layout{
+    max-width:880px;
+    margin:48px auto 100px;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  nav.toc{
+    position:sticky;
+    top:32px;
+    font-size:13.5px;
+  }
+  nav.toc .toc-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#8a9793;
+    margin-bottom:12px;
+    display:block;
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0; padding:0;
+    border-left:1px solid var(--line);
+  }
+  nav.toc li{margin:0;}
+  nav.toc a{
+    display:block;
+    padding:7px 0 7px 16px;
+    color:var(--muted);
+    text-decoration:none;
+    border-left:2px solid transparent;
+    margin-left:-1px;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.toc a:hover{color:var(--teal-deep); border-left-color:var(--teal);}
+
+  main{min-width:0;}
+  section{
+    padding-top:8px;
+    margin-bottom:40px;
+    scroll-margin-top:32px;
+  }
+  section h2{
+    font-family:"Fraunces",serif;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    margin:0 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  section h2 .num{
+    font-family:"JetBrains Mono",monospace;
+    font-size:13px;
+    color:var(--teal);
+    font-weight:500;
+  }
+  section p, section li{
+    font-size:15.5px;
+    color:#2b3532;
+  }
+  section p{margin:12px 0;}
+  section ul{margin:12px 0; padding-left:20px;}
+  section li{margin:6px 0;}
+  section a{color:var(--teal-deep);}
+
+  .callout{
+    background:var(--mint);
+    border:1px solid rgba(14,110,99,0.18);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:14.5px;
+    margin:14px 0;
+    color:var(--teal-deep);
+  }
+  .callout strong{color:var(--teal-deep);}
+
+  code.inline{
+    font-family:"JetBrains Mono",monospace;
+    background:var(--mono-bg);
+    color:var(--mono-ink);
+    padding:2px 7px;
+    border-radius:5px;
+    font-size:13px;
+  }
+
+  table.perm{
+    width:100%;
+    border-collapse:collapse;
+    margin:14px 0;
+    font-size:14px;
+  }
+  table.perm th, table.perm td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid var(--line);
+  }
+  table.perm th{
+    font-family:"JetBrains Mono",monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+  }
+
+  footer{
+    max-width:880px;
+    margin:0 auto 64px;
+    padding:24px 24px 0;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width:720px){
+    .layout{grid-template-columns:1fr;}
+    nav.toc{position:relative; top:0; padding-bottom:12px; border-bottom:1px solid var(--line); margin-bottom:8px;}
+    nav.toc ol{
+      display:flex; flex-wrap:wrap; gap:4px 14px;
+      border-left:none;
+    }
+    nav.toc a{padding:4px 0; border-left:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
 </head>
 <body>
+<div class="backdrop">
 
-  <h1>Privacy Policy</h1>
+  <header>
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6l-9-4Z"/></svg>
+      On-device by design
+    </span>
+    <h1>Privacy Policy</h1>
+    <p class="sub">Deep Clean scans and manages your storage entirely on your device. This page explains, in plain terms, what that means for your data.</p>
+    <div class="meta-row">
+      <div><span class="label">App</span>Deep Clean</div>
+      <div><span class="label">Developer</span>Saeed Ur Rehman</div>
+      <div><span class="label">Contact</span><a href="mailto:saeed.ur.rehman.dev@gmail.com">saeed.ur.rehman.dev@gmail.com</a></div>
+      <div><span class="label">Effective date</span>June 20, 2026</div>
+    </div>
+  </header>
 
-  <p><strong>App Name:</strong> Deep Clean</p>
-  <p><strong>Developer:</strong> Saeed Ur Rehman</p>
-  <p><strong>Contact:</strong> saeed.ur.rehman.dev@gmail.com</p>
-  <p><strong>Effective Date:</strong> June 20, 2026</p>
+  <div class="glance-wrap">
+    <div class="glance">
+      <h2>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0e6e63" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        At a glance
+      </h2>
+      <div class="glance-grid">
+        <div class="glance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <p><strong>Nothing leaves your phone</strong>All scanning and cleanup happen locally. No files are uploaded anywhere.</p>
+        </div>
+        <div class="glance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          <p><strong>No third parties</strong>No analytics, ads, or crash-reporting SDKs are bundled in this version.</p>
+        </div>
+        <div class="glance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+          <p><strong>No servers, no accounts</strong>The app has no backend. There's nothing to sign up for and nothing stored in the cloud.</p>
+        </div>
+        <div class="glance-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v4H4zM4 12h16M4 20h10"/></svg>
+          <p><strong>You stay in control</strong>Storage access can be revoked anytime in your system settings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <h2>1. Overview</h2>
-  <p>
-    This Privacy Policy explains how the Deep Clean application handles user data.
-    The app is designed to operate fully on-device for file cleaning and storage analysis.
-  </p>
+  <div class="layout">
+    <nav class="toc">
+      <span class="toc-label">Contents</span>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#access">Data access</a></li>
+        <li><a href="#processing">Data processing</a></li>
+        <li><a href="#sharing">Data sharing</a></li>
+        <li><a href="#third-party">Third parties</a></li>
+        <li><a href="#permissions">Permissions</a></li>
+        <li><a href="#retention">Retention</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#children">Children's privacy</a></li>
+        <li><a href="#changes">Changes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
 
-  <h2>2. Data Access</h2>
-  <p>
-    The app may request access to photos, videos, and files stored on the device.
-    This access is required to scan storage usage, detect large files, and identify duplicates.
-  </p>
+    <main>
+      <section id="overview">
+        <h2><span class="num">01</span>Overview</h2>
+        <p>This Privacy Policy explains how the Deep Clean application handles user data. Deep Clean is built to operate fully on-device for file cleaning and storage analysis — it does not require an internet connection to function, and no personal data is transmitted to the developer or any other party.</p>
+      </section>
 
-  <h2>3. Data Processing</h2>
-  <p>
-    All scanning and analysis are performed locally on the device.
-    No personal files are uploaded, transmitted, or stored on external servers.
-  </p>
+      <section id="access">
+        <h2><span class="num">02</span>Data access</h2>
+        <p>The app may request access to photos, videos, and files stored on your device. This access is required to:</p>
+        <ul>
+          <li>Scan overall storage usage</li>
+          <li>Detect unusually large files</li>
+          <li>Identify duplicate or similar files</li>
+        </ul>
+        <p>The app only reads file metadata and content needed to perform these functions — it does not read files unrelated to cleaning and storage analysis.</p>
+      </section>
 
-  <h2>4. Data Sharing</h2>
-  <p>
-    The app does not share user files or personal media with any third parties.
-    The app does not use backend servers or cloud storage.
-  </p>
+      <section id="processing">
+        <h2><span class="num">03</span>Data processing</h2>
+        <p>All scanning and analysis are performed locally, on your device's processor. No personal files are uploaded, transmitted, or stored on external servers, and the app does not maintain any cloud copy of your data.</p>
+        <div class="callout"><strong>In short:</strong> if your device is offline, Deep Clean works exactly the same way.</div>
+      </section>
 
-  <h2>5. Third-Party Services</h2>
-  <p>
-    This version of the app does not integrate analytics, advertising, or crash reporting services.
-  </p>
+      <section id="sharing">
+        <h2><span class="num">04</span>Data sharing</h2>
+        <p>The app does not share user files or personal media with any third parties. It does not use backend servers, remote APIs, or cloud storage of any kind, so there is no channel through which your data could be shared even inadvertently.</p>
+      </section>
 
-  <h2>6. Permissions</h2>
-  <p>
-    Storage permissions are required to analyze and manage files on the device.
-    Users may disable permissions at any time through system settings.
-  </p>
+      <section id="third-party">
+        <h2><span class="num">05</span>Third-party services</h2>
+        <p>This version of the app does not integrate analytics, advertising, or crash-reporting services. If a future release adds any third-party service, this policy will be updated first to disclose what is collected and why, before that update reaches you.</p>
+      </section>
 
-  <h2>7. Security</h2>
-  <p>
-    Since all processing is performed locally, user data remains under full device control.
-  </p>
+      <section id="permissions">
+        <h2><span class="num">06</span>Permissions</h2>
+        <p>Deep Clean requests the minimum permissions needed to do its job:</p>
+        <table class="perm">
+          <tr><th>Permission</th><th>Why it's needed</th></tr>
+          <tr><td>Storage / Files access</td><td>To analyze space usage and manage files you choose to delete</td></tr>
+          <tr><td>Photos &amp; Videos</td><td>To detect duplicates and large media for cleanup</td></tr>
+        </table>
+        <p>You can review or revoke any permission at any time through your device's <code class="inline">Settings → Apps → Deep Clean → Permissions</code>. Revoking storage access will limit the app's core cleaning features but won't affect anything else on your device.</p>
+      </section>
 
-  <h2>8. Children's Privacy</h2>
-  <p>
-    The app is not intended for children under 13, and no personal data is knowingly collected.
-  </p>
+      <section id="retention">
+        <h2><span class="num">07</span>Data retention</h2>
+        <p>Because Deep Clean does not collect or transmit personal data, there is no server-side retention period to disclose. Any information the app uses to display scan results (such as file size or duplicate groupings) is generated on demand and discarded when the app is closed or the device is restarted.</p>
+      </section>
 
-  <h2>9. Changes</h2>
-  <p>
-    This Privacy Policy may be updated in future releases. Any changes will be reflected in this page.
-  </p>
+      <section id="rights">
+        <h2><span class="num">08</span>Your rights</h2>
+        <p>Since Deep Clean does not collect, store, or process personal data on any server, there is no remote profile to access, correct, export, or delete — that data simply doesn't exist outside your device. You retain full control over the files themselves at all times, and you may uninstall the app to remove all local app data.</p>
+        <p>If you have questions about how this applies to your rights under regulations such as the GDPR or CCPA, contact the developer using the details below.</p>
+      </section>
 
+      <section id="security">
+        <h2><span class="num">09</span>Security</h2>
+        <p>Since all processing happens locally, your data remains under your device's own security controls (such as screen lock, disk encryption, and OS-level sandboxing) rather than a system managed by the developer. We recommend keeping your device's operating system up to date to benefit from the latest security protections.</p>
+      </section>
+
+      <section id="children">
+        <h2><span class="num">10</span>Children's privacy</h2>
+        <p>Deep Clean is not intended for children under 13, and no personal data is knowingly collected from anyone, regardless of age. If you believe a child has used the app in a way that raises a concern, please contact us and we will address it promptly.</p>
+      </section>
+
+      <section id="changes">
+        <h2><span class="num">11</span>Changes to this policy</h2>
+        <p>This Privacy Policy may be updated in future releases to reflect new features or legal requirements. Any changes will be posted on this page along with a revised effective date. Continued use of the app after changes take effect constitutes acceptance of the updated policy.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="num">12</span>Contact</h2>
+        <p>Questions about this policy or how Deep Clean handles data can be sent directly to the developer:</p>
+        <div class="callout">
+          <strong>Saeed Ur Rehman</strong><br>
+          <a href="mailto:saeed.ur.rehman.dev@gmail.com" style="color:var(--teal-deep); font-weight:600;">saeed.ur.rehman.dev@gmail.com</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <span>© 2026 Saeed Ur Rehman — Deep Clean</span>
+    <span>Effective June 20, 2026</span>
+  </footer>
+
+</div>
 </body>
 </html>
